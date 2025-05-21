@@ -46,6 +46,8 @@ body {
 .banner-img {
     width: 100%;
     height: auto;
+    overflow: hidden;
+    position: relative;
     max-height: 200px;
     /* Sesuaikan tinggi maksimal */
     object-fit: cover;
@@ -53,6 +55,8 @@ body {
     display: block;
     border-radius: 10px;
     /* Tambahan estetika */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    /* Sedikit bayangan */
 }
 
 .profile-pic {
