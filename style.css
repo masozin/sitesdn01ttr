@@ -35,9 +35,24 @@ body {
 }
 
 .banner {
-    height: 180px;
-    background: url('https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?q=80&w=1470&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    /* Sedikit bayangan */
+}
 
+.banner-img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    /* Sesuaikan tinggi maksimal */
+    object-fit: cover;
+    /* Gambar tetap proporsional dan terpotong rapi */
+    display: block;
+    border-radius: 10px;
+    /* Tambahan estetika */
 }
 
 .profile-pic {
@@ -55,7 +70,7 @@ body {
 
 .content {
     padding: 4rem 1.5rem 2rem;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
 }
 
 .name {
