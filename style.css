@@ -20,7 +20,7 @@ body {
     color: var(--text);
     display: flex;
     justify-content: center;
-    padding: 2rem 1rem;
+    padding: 1rem 1rem;
 }
 
 .card {
@@ -206,4 +206,5 @@ body {
     .link-card {
         font-size: 0.95rem;
     }
+
 }
