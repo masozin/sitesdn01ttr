@@ -1,129 +1,798 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Microsite SDN 01 Totorejo</title>
-    <link rel="icon" type="image/png" href="icon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <title>Loading…</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tabler Icons CDN (gratis, 5700+ ikon) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    />
+    <style>
+      /* ─── Design Tokens ─────────────────────────────────────────── */
+      :root {
+        --clr-bg: #0d1117;
+        --clr-card: #161b22;
+        --clr-surface: #1c2330;
+        --clr-border: rgba(255, 255, 255, 0.07);
+        --clr-border-hover: rgba(255, 255, 255, 0.16);
 
-<body>
-    <div class="card">
+        --clr-accent: #4f9cf9;
+        --clr-accent-glow: rgba(79, 156, 249, 0.25);
+        --clr-accent2: #a78bfa;
 
-        <img src="banner.jpg" alt="Foto banner" class="banner-img">
+        --clr-text: #e6edf3;
+        --clr-muted: #8b949e;
+        --clr-name: #ffffff;
 
-        <img src="profil.jpg" alt="Foto Profil" class="profile-pic">
-        <div class="content">
-            <div class="name">SDN 01 Totorejo</div>
-            <div class="bio">Kec. Belitang II Kab. OKU Timur</div>
+        --radius-card: 20px;
+        --radius-btn: 12px;
+        --radius-inner: 9px;
 
-            <div class="socials">
-                <a href="#">📸</a>
-                <a href="#">✈️</a>
-                <a href="#">💼</a>
-            </div>
+        --shadow-card:
+          0 24px 64px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.04);
+        --shadow-btn: 0 2px 8px rgba(0, 0, 0, 0.4);
+        --shadow-btn-hover: 0 4px 20px rgba(79, 156, 249, 0.2);
 
-            <div class="divider"></div>
+        --font-body: "Plus Jakarta Sans", sans-serif;
+        --font-display: "Sora", sans-serif;
 
-            <!-- time countdown -->
-            <div style="display: none;" class="countdown" id="countdown">
-                ⏳ Promo berakhir dalam: <span id="timer">--:--:--</span>
-            </div>
+        --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
-            <div class="links">
-                <!-- tombol biasa -->
-                <a href="https://masozin.github.io/pdsdn01ttr" class="link-card">
-                    <span><span class="link-icon">👩‍🎓</span> Data Peserta Didik</span>
-                </a>
-                <a href="https://sdn01ttr.ozinsq.my.id/erapor/" class="link-card">
-                    <span><span class="link-icon">📝 </span> E-Rapor</span>
-                </a>
+      /* ─── Reset & Base ───────────────────────────────────────────── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-                <!-- Dropdown #1 - berisi beberapa tombol -->
-                <!-- <div class="link-card" onclick="toggleDropdown('drop1')">
-                    <span><span class="link-icon">🔗</span> Input Nilai Ijazah</span>
-                    <span>▼</span>
-                </div>
-                <div id="drop1" class="dropdown-content">
-                    <a href="https://docs.google.com/spreadsheets/d/1JJwOYeNzaMAeHhq70XF4l2sz27aR4lUfJ91g0bUFTbE/edit?usp=sharing"
-                        target="_blank">🎓 Kelas 6a</a>
-                    <a href="https://docs.google.com/spreadsheets/d/1c5zUIG4AbtpR9zK5zWOcETm2DKyhLyxzsaD8KrODB78/edit?usp=sharing"
-                        target="_blank">🎓 Kelas 6b</a>
-                </div> -->
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-bg);
+        color: var(--clr-text);
+        min-height: 100dvh;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 24px 16px 48px;
+        /* subtle mesh background */
+        background-image:
+          radial-gradient(
+            ellipse 80% 60% at 50% -10%,
+            rgba(79, 156, 249, 0.12) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 50% 40% at 90% 80%,
+            rgba(167, 139, 250, 0.08) 0%,
+            transparent 50%
+          );
+      }
 
-                <div class="divider"></div>
+      /* ─── Card ───────────────────────────────────────────────────── */
+      .card {
+        width: 100%;
+        max-width: 440px;
+        background: var(--clr-card);
+        border-radius: var(--radius-card);
+        box-shadow: var(--shadow-card);
+        border: 1px solid var(--clr-border);
+        overflow: hidden;
+        animation: fadeUp 0.5s ease both;
+      }
 
-                <!-- tombol biasa -->
-                <a href="https://docs.google.com/spreadsheets/d/1krsHuu-25g8k_ogzqvM_ed4D8d3NiIgkwpuzH59kNWI/edit?usp=sharing"
-                    class="link-card">
-                    <span><span class="link-icon">📝</span>Lembar Absensi</span>
-                </a>
-                <a href="https://sites.google.com/guru.sd.belajar.id/sdn01totorejo/buku-kurikulum-merdeka"
-                    class="link-card">
-                    <span><span class="link-icon">📚</span>Buku Kurikulum Merdeka</span>
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.docs.editors.sheets&pcampaignid=web_share"
-                    class="link-card">
-                    <span><span class="link-icon">🪟</span> Download SpreadSheet</span>
-                </a>
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-                <div class="divider"></div>
+      /* ─── Banner ─────────────────────────────────────────────────── */
+      .banner-wrap {
+        position: relative;
+        width: 100%;
+        height: 140px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #1a2744, #0d1b38);
+      }
+      .banner-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .banner-wrap::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 40%,
+          var(--clr-card) 100%
+        );
+      }
 
-                <a href="https://masozin.github.io/pdsdn01ttr" class="link-card">
-                    <span><span class="link-icon">🏫</span> Profil</span>
-                </a>
+      /* ─── Avatar ─────────────────────────────────────────────────── */
+      .avatar-wrap {
+        display: flex;
+        justify-content: center;
+        margin-top: -40px;
+        position: relative;
+        z-index: 2;
+      }
+      .avatar-wrap img {
+        width: 82px;
+        height: 82px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--clr-card);
+        box-shadow:
+          0 0 0 2px var(--clr-accent),
+          0 8px 24px rgba(0, 0, 0, 0.5);
+      }
 
+      /* ─── Identity ───────────────────────────────────────────────── */
+      .identity {
+        text-align: center;
+        padding: 12px 24px 4px;
+      }
+      .identity .name {
+        font-family: var(--font-display);
+        font-size: 1.18rem;
+        font-weight: 800;
+        color: var(--clr-name);
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+      }
+      .identity .bio {
+        font-size: 0.82rem;
+        color: var(--clr-muted);
+        margin-top: 4px;
+        font-weight: 500;
+      }
 
-                <!-- Dropdown #2 - berisi paragraf -->
-                <div style="display: none;" class="link-card" onclick="toggleDropdown('drop2')">
-                    <span><span class="link-icon">ℹ️</span> Tentang Saya</span>
-                    <span>▼</span>
-                </div>
-                <div id="drop2" class="dropdown-content">
-                    <p>Saya adalah desainer UI/UX dan pengembang frontend yang fokus pada pembuatan pengalaman digital
-                        yang bersih, cepat, dan ramah pengguna.</p>
-                </div>
-            </div>
-            <div class="divider2"></div>
-            <div class="footer">@2025</div>
-        </div>
+      /* ─── Menu Area ──────────────────────────────────────────────── */
+      .menu-area {
+        padding: 16px 20px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      /* ─── Divider ────────────────────────────────────────────────── */
+      .item-divider {
+        flex-shrink: 0; /* styled inline via JS */
+      }
+
+      /* ─── Link / Button ──────────────────────────────────────────── */
+      .item-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        background: var(--clr-surface);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-btn);
+        color: var(--clr-text);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background var(--transition),
+          border-color var(--transition),
+          box-shadow var(--transition),
+          transform var(--transition);
+        box-shadow: var(--shadow-btn);
+        user-select: none;
+      }
+      .item-link:hover {
+        background: rgba(79, 156, 249, 0.08);
+        border-color: var(--clr-accent);
+        box-shadow: var(--shadow-btn-hover);
+        transform: translateY(-1px);
+      }
+      .item-link:active {
+        transform: scale(0.98);
+      }
+      .item-link .icon {
+        font-size: 1.1rem;
+        flex-shrink: 0;
+        line-height: 1;
+      }
+      /* Tabler icons sizing */
+      .item-link .icon i {
+        font-size: 1.2rem;
+        vertical-align: middle;
+      }
+      .item-link .lbl {
+        flex: 1;
+      }
+      .item-link .arrow {
+        color: var(--clr-muted);
+        font-size: 0.75rem;
+        transition: transform var(--transition);
+        flex-shrink: 0;
+      }
+      .item-link.open .arrow {
+        transform: rotate(180deg);
+      }
+
+      /* ─── Dropdown container ─────────────────────────────────────── */
+      .dropdown-children {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        padding: 6px 0 2px 20px;
+        border-left: 2px solid var(--clr-accent);
+        margin-left: 8px;
+        animation: slideDown 0.2s ease;
+      }
+      .dropdown-children.show {
+        display: flex;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* nested children indent */
+      .dropdown-children .dropdown-children {
+        margin-left: 4px;
+        border-left-color: var(--clr-accent2);
+      }
+
+      /* ─── Text block ─────────────────────────────────────────────── */
+      .item-text {
+        padding: 8px 4px;
+        font-size: 0.88rem;
+        color: var(--clr-muted);
+        line-height: 1.6;
+      }
+
+      /* ─── Textarea / info block ──────────────────────────────────── */
+      .item-textarea {
+        border-radius: var(--radius-btn);
+        padding: 14px 16px;
+        border: 1px solid var(--clr-border);
+        font-size: 0.88rem;
+        line-height: 1.65;
+        background: var(--clr-surface);
+        color: var(--clr-muted);
+      }
+      .item-textarea .ta-label {
+        font-weight: 700;
+        color: var(--clr-text);
+        margin-bottom: 6px;
+        font-size: 0.9rem;
+      }
+
+      /* ─── Countdown ──────────────────────────────────────────────── */
+      .item-countdown {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 16px 14px;
+        border-radius: var(--radius-btn);
+        border: 1px solid rgba(255, 193, 7, 0.25);
+        background: rgba(255, 193, 7, 0.06);
+        text-align: center;
+      }
+      .item-countdown .cd-label {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: #f0c040;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+      }
+      .item-countdown .cd-segments {
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .item-countdown .cd-seg {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        min-width: 48px;
+      }
+      .item-countdown .cd-num {
+        font-family: var(--font-display);
+        font-size: 1.85rem;
+        font-weight: 800;
+        color: #ffd060;
+        letter-spacing: 0.02em;
+        line-height: 1;
+        background: rgba(255, 208, 0, 0.08);
+        border-radius: 8px;
+        padding: 4px 8px;
+        min-width: 52px;
+        text-align: center;
+      }
+      .item-countdown .cd-unit {
+        font-size: 0.62rem;
+        font-weight: 700;
+        color: #c8a020;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .item-countdown .cd-sep {
+        font-family: var(--font-display);
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: rgba(255, 208, 0, 0.35);
+        line-height: 1;
+        margin-top: 4px;
+        align-self: flex-start;
+      }
+
+      /* ─── Icon Row ───────────────────────────────────────────────── */
+      .item-icon-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        padding: 4px 0;
+      }
+      .icon-row-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: var(--clr-surface);
+        border: 1px solid var(--clr-border);
+        color: var(--clr-text);
+        text-decoration: none;
+        font-size: 1.45rem;
+        transition:
+          background var(--transition),
+          border-color var(--transition),
+          box-shadow var(--transition),
+          transform var(--transition);
+        box-shadow: var(--shadow-btn);
+        flex-shrink: 0;
+      }
+      .icon-row-btn i {
+        font-size: 1.35rem;
+      }
+      .icon-row-btn:hover {
+        background: rgba(79, 156, 249, 0.12);
+        border-color: var(--clr-accent);
+        box-shadow: var(--shadow-btn-hover);
+        transform: translateY(-2px) scale(1.07);
+      }
+      .icon-row-btn:active {
+        transform: scale(0.94);
+      }
+
+      /* ─── Footer ─────────────────────────────────────────────────── */
+      .footer-bar {
+        text-align: center;
+        padding: 10px 20px 20px;
+        font-size: 0.75rem;
+        color: var(--clr-muted);
+        border-top: 1px solid var(--clr-border);
+        margin-top: 4px;
+      }
+
+      /* ─── Loading skeleton ───────────────────────────────────────── */
+      #loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        color: var(--clr-muted);
+        font-size: 0.85rem;
+        gap: 8px;
+      }
+      .spinner {
+        width: 18px;
+        height: 18px;
+        border: 2px solid var(--clr-border);
+        border-top-color: var(--clr-accent);
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* ─── Error state ────────────────────────────────────────────── */
+      #error-msg {
+        display: none;
+        padding: 16px 20px;
+        color: #f87171;
+        font-size: 0.85rem;
+        text-align: center;
+        border: 1px solid rgba(248, 113, 113, 0.2);
+        border-radius: var(--radius-btn);
+        margin: 12px 20px;
+        background: rgba(248, 113, 113, 0.05);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card" id="card">
+      <!-- Profile skeleton shown while data loads -->
+      <div id="loading">
+        <div class="spinner"></div>
+        Memuat data…
+      </div>
+      <div id="error-msg"></div>
     </div>
 
     <script>
-        // Countdown Timer
-        const deadline = new Date();
-        deadline.setDate(deadline.getDate() + 5);
-        const timerElement = document.getElementById('timer');
+      // ─── Renderer ──────────────────────────────────────────────────────────
+      const card = document.getElementById("card");
+      const loadingEl = document.getElementById("loading");
+      const errorEl = document.getElementById("error-msg");
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = deadline - now;
+      /**
+       * renderIcon(icon)
+       * Mendukung 3 format ikon:
+       *   1. Tabler icon  → "ti:school"  atau "ti:brand-google"
+       *   2. Emoji        → "🏫" "📝" dll
+       *   3. URL gambar   → "https://…/logo.png" atau "./img/logo.png"
+       */
+      function renderIcon(icon) {
+        if (!icon) return "";
+        if (icon.startsWith("ti:")) {
+          // Tabler Icons — https://tabler.io/icons
+          const name = icon.slice(3); // "ti:school" → "school"
+          return `<span class="icon"><i class="ti ti-${name}"></i></span>`;
+        }
+        if (
+          icon.startsWith("http") ||
+          icon.startsWith("./") ||
+          icon.startsWith("../") ||
+          icon.match(/\.(png|jpg|svg|webp)$/i)
+        ) {
+          // URL gambar lokal/remote
+          return `<span class="icon"><img src="${icon}" alt="" style="width:1.2rem;height:1.2rem;object-fit:contain;vertical-align:middle;border-radius:3px;"></span>`;
+        }
+        // Emoji atau teks biasa
+        return `<span class="icon">${icon}</span>`;
+      }
 
-            if (distance <= 0) {
-                timerElement.textContent = "00:00:00";
-                return;
+      // Parse deadline string like "+5d", "+3h", or ISO date
+      function parseDeadline(str) {
+        const rel = str && str.match(/^([+-])(\d+)([dhms])$/);
+        if (rel) {
+          const amount = parseInt(rel[2]);
+          const unit = rel[3];
+          const ms = { d: 864e5, h: 36e5, m: 6e4, s: 1e3 }[unit];
+          return Date.now() + amount * ms;
+        }
+        return new Date(str).getTime();
+      }
+
+      function formatSegments(ms) {
+        if (ms <= 0) return { d: 0, h: 0, m: 0, s: 0 };
+        const d = Math.floor(ms / 864e5);
+        const h = Math.floor((ms % 864e5) / 36e5);
+        const m = Math.floor((ms % 36e5) / 6e4);
+        const s = Math.floor((ms % 6e4) / 1e3);
+        return { d, h, m, s };
+      }
+      function pad(n) {
+        return String(n).padStart(2, "0");
+      }
+
+      // Build a single menu item element (recursive for nested)
+      function buildItem(item, depth = 0) {
+        if (item.status === "hide") return null;
+
+        switch (item.type) {
+          case "divider": {
+            const el = document.createElement("div");
+            el.className = "item-divider";
+            const thick =
+              item.thickness !== undefined ? Number(item.thickness) : 1;
+            const color = item.color || "rgba(255,255,255,0.07)";
+            const spacingH = item.height || (thick === 0 ? "8px" : "16px");
+            // Height = total vertical space; line sits in the middle
+            el.style.height = spacingH;
+            el.style.display = "flex";
+            el.style.alignItems = "center";
+            if (thick > 0) {
+              // inner line element
+              const line = document.createElement("div");
+              line.style.cssText = `width:100%;height:${thick}px;background:${color};border-radius:${thick}px;`;
+              el.appendChild(line);
             }
+            return el;
+          }
 
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          case "link": {
+            const el = document.createElement("a");
+            el.className = "item-link";
+            el.href = item.url || "#";
+            if (item.target) el.target = item.target;
+            el.innerHTML = `
+            ${renderIcon(item.icon)}
+            <span class="lbl">${item.label || ""}</span>
+          `;
+            applyStyle(el, item.style);
+            return el;
+          }
 
-            timerElement.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+          case "text": {
+            const el = document.createElement("div");
+            el.className = "item-text";
+            el.textContent = item.content || "";
+            const s = item.style || {};
+            if (s.align) el.style.textAlign = s.align;
+            if (s.color) el.style.color = s.color;
+            if (s.size) el.style.fontSize = s.size;
+            if (s.weight) el.style.fontWeight = s.weight;
+            return el;
+          }
+
+          case "textarea": {
+            const el = document.createElement("div");
+            el.className = "item-textarea";
+            const s = item.style || {};
+            if (s.bgcolor) el.style.background = s.bgcolor;
+            if (s.color) el.style.color = s.color;
+            if (item.label) {
+              const lbl = document.createElement("div");
+              lbl.className = "ta-label";
+              lbl.textContent = item.label;
+              el.appendChild(lbl);
+            }
+            const body = document.createElement("div");
+            body.textContent = item.content || "";
+            el.appendChild(body);
+            return el;
+          }
+
+          case "countdown": {
+            const deadlineMs = parseDeadline(item.deadline);
+            const el = document.createElement("div");
+            el.className = "item-countdown";
+            const s = item.style || {};
+            if (s.bgcolor) el.style.background = s.bgcolor;
+            if (s.color) el.style.borderColor = s.color;
+
+            const lbl = document.createElement("div");
+            lbl.className = "cd-label";
+            if (s.color) lbl.style.color = s.color;
+            lbl.textContent = item.label || "Waktu tersisa";
+
+            // Build segment containers: D : H : M : S
+            const units = [
+              { key: "d", label: "Hari" },
+              { key: "h", label: "Jam" },
+              { key: "m", label: "Menit" },
+              { key: "s", label: "Detik" },
+            ];
+
+            const segsWrap = document.createElement("div");
+            segsWrap.className = "cd-segments";
+
+            const numEls = {};
+            units.forEach((u, i) => {
+              const seg = document.createElement("div");
+              seg.className = "cd-seg";
+
+              const numEl = document.createElement("div");
+              numEl.className = "cd-num";
+              if (s.color) numEl.style.color = s.color;
+              numEl.textContent = "00";
+              numEls[u.key] = numEl;
+
+              const unitEl = document.createElement("div");
+              unitEl.className = "cd-unit";
+              if (s.color) unitEl.style.color = s.color;
+              unitEl.textContent = u.label;
+
+              seg.appendChild(numEl);
+              seg.appendChild(unitEl);
+              segsWrap.appendChild(seg);
+
+              // Add separator except after last
+              if (i < units.length - 1) {
+                const sep = document.createElement("div");
+                sep.className = "cd-sep";
+                sep.textContent = ":";
+                segsWrap.appendChild(sep);
+              }
+            });
+
+            el.appendChild(lbl);
+            el.appendChild(segsWrap);
+
+            function tick() {
+              const remaining = deadlineMs - Date.now();
+              const t = formatSegments(remaining);
+              numEls.d.textContent = pad(t.d);
+              numEls.h.textContent = pad(t.h);
+              numEls.m.textContent = pad(t.m);
+              numEls.s.textContent = pad(t.s);
+            }
+            tick();
+            setInterval(tick, 1000);
+            return el;
+          }
+
+          case "dropdown": {
+            const wrapper = document.createElement("div");
+
+            // Trigger button
+            const btn = document.createElement("div");
+            btn.className = "item-link";
+            btn.style.cursor = "pointer";
+            btn.setAttribute("role", "button");
+            btn.setAttribute("aria-expanded", "false");
+            btn.innerHTML = `
+            ${renderIcon(item.icon)}
+            <span class="lbl">${item.label || ""}</span>
+            <span class="arrow">▼</span>
+          `;
+            applyStyle(btn, item.style);
+
+            // Children container
+            const children = document.createElement("div");
+            children.className = "dropdown-children";
+
+            (item.children || []).forEach((child) => {
+              const childEl = buildItem(child, depth + 1);
+              if (childEl) children.appendChild(childEl);
+            });
+
+            btn.addEventListener("click", () => {
+              const open = children.classList.toggle("show");
+              btn.classList.toggle("open", open);
+              btn.setAttribute("aria-expanded", String(open));
+            });
+
+            wrapper.appendChild(btn);
+            wrapper.appendChild(children);
+            return wrapper;
+          }
+
+          case "icon-row": {
+            // Horizontal icon buttons, max 5 per row, centered
+            const wrap = document.createElement("div");
+            wrap.className = "item-icon-row";
+            const items = (item.children || []).filter(
+              (c) => c.status !== "hide",
+            );
+            items.forEach((child) => {
+              const btn = document.createElement("a");
+              btn.className = "icon-row-btn";
+              btn.href = child.url || "#";
+              if (child.target) btn.target = child.target;
+              if (child.label) btn.title = child.label; // tooltip on hover
+              btn.innerHTML = renderIcon(child.icon);
+              applyStyle(btn, child.style);
+              wrap.appendChild(btn);
+            });
+            return wrap;
+          }
+
+          default:
+            return null;
+        }
+      }
+
+      // Apply optional style overrides
+      function applyStyle(el, s) {
+        if (!s) return;
+        if (s.bgcolor) el.style.background = s.bgcolor;
+        if (s.color) el.style.color = s.color;
+        if (s.size) el.style.fontSize = s.size;
+        if (s.weight) el.style.fontWeight = s.weight;
+      }
+
+      // Render profile header
+      function buildProfile(profile) {
+        if (!profile || profile.status === "hide") return "";
+
+        return `
+        <div class="banner-wrap">
+          <img src="${profile.banner}" alt="Banner" onerror="this.style.display='none'" />
+        </div>
+        <div class="avatar-wrap">
+          <img src="${profile.avatar}" alt="Profil" onerror="this.style.background='#2a3a5a'" />
+        </div>
+        <div class="identity">
+          <div class="name">${profile.name || ""}</div>
+          <div class="bio">${profile.bio || ""}</div>
+        </div>
+      `;
+      }
+
+      // Main render
+      function render(data) {
+        // Update page meta
+        if (data.site) {
+          document.title = data.site.title || "Microsite";
+          document.documentElement.lang = data.site.lang || "id";
+          if (data.site.favicon) {
+            let link = document.querySelector("link[rel~='icon']");
+            if (!link) {
+              link = document.createElement("link");
+              link.rel = "icon";
+              document.head.appendChild(link);
+            }
+            link.href = data.site.favicon;
+          }
         }
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+        card.innerHTML = "";
 
-        // Toggle dropdown
-        function toggleDropdown(id) {
-            const el = document.getElementById(id);
-            el.classList.toggle("show");
+        // Profile
+        const profileHTML = buildProfile(data.profile);
+        if (profileHTML) {
+          const div = document.createElement("div");
+          div.innerHTML = profileHTML;
+          while (div.firstChild) card.appendChild(div.firstChild);
         }
+
+        // Menu
+        const menuArea = document.createElement("div");
+        menuArea.className = "menu-area";
+        (data.menu || []).forEach((item) => {
+          const el = buildItem(item);
+          if (el) menuArea.appendChild(el);
+        });
+        card.appendChild(menuArea);
+
+        // Footer
+        if (data.footer && data.footer.status !== "hide") {
+          const footer = document.createElement("div");
+          footer.className = "footer-bar";
+          footer.textContent = data.footer.text || "";
+          card.appendChild(footer);
+        }
+      }
+
+      // ─── Bootstrap ────────────────────────────────────────────────────────
+      async function init() {
+        try {
+          const res = await fetch("data.json");
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          render(data);
+        } catch (err) {
+          loadingEl.style.display = "none";
+          errorEl.style.display = "block";
+          errorEl.textContent = `⚠️ Gagal memuat data.json — ${err.message}`;
+          console.error(err);
+        }
+      }
+
+      init();
     </script>
-</body>
-
+  </body>
 </html>

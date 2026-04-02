@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Microsite SDN 01 Totorejo</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="card">
+
+        <img src="banner.jpg" alt="Foto banner" class="banner-img">
+
+        <img src="profil.jpg" alt="Foto Profil" class="profile-pic">
+        <div class="content">
+            <div class="name">SDN 01 Totorejo</div>
+            <div class="bio">Kec. Belitang II Kab. OKU Timur</div>
+
+            <div class="socials">
+                <a href="#">📸</a>
+                <a href="#">✈️</a>
+                <a href="#">💼</a>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- time countdown -->
+            <div style="display: none;" class="countdown" id="countdown">
+                ⏳ Promo berakhir dalam: <span id="timer">--:--:--</span>
+            </div>
+
+            <div class="links">
+                <!-- tombol biasa -->
+                <a href="https://masozin.github.io/pdsdn01ttr" class="link-card">
+                    <span><span class="link-icon">👩‍🎓</span> Data Peserta Didik</span>
+                </a>
+                <a href="https://sdn01ttr.ozinsq.my.id/erapor/" class="link-card">
+                    <span><span class="link-icon">📝 </span> E-Rapor</span>
+                </a>
+
+                <!-- Dropdown #1 - berisi beberapa tombol -->
+                <!-- <div class="link-card" onclick="toggleDropdown('drop1')">
+                    <span><span class="link-icon">🔗</span> Input Nilai Ijazah</span>
+                    <span>▼</span>
+                </div>
+                <div id="drop1" class="dropdown-content">
+                    <a href="https://docs.google.com/spreadsheets/d/1JJwOYeNzaMAeHhq70XF4l2sz27aR4lUfJ91g0bUFTbE/edit?usp=sharing"
+                        target="_blank">🎓 Kelas 6a</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1c5zUIG4AbtpR9zK5zWOcETm2DKyhLyxzsaD8KrODB78/edit?usp=sharing"
+                        target="_blank">🎓 Kelas 6b</a>
+                </div> -->
+
+                <div class="divider"></div>
+
+                <!-- tombol biasa -->
+                <a href="https://docs.google.com/spreadsheets/d/1krsHuu-25g8k_ogzqvM_ed4D8d3NiIgkwpuzH59kNWI/edit?usp=sharing"
+                    class="link-card">
+                    <span><span class="link-icon">📝</span>Lembar Absensi</span>
+                </a>
+                <a href="https://sites.google.com/guru.sd.belajar.id/sdn01totorejo/buku-kurikulum-merdeka"
+                    class="link-card">
+                    <span><span class="link-icon">📚</span>Buku Kurikulum Merdeka</span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.docs.editors.sheets&pcampaignid=web_share"
+                    class="link-card">
+                    <span><span class="link-icon">🪟</span> Download SpreadSheet</span>
+                </a>
+
+                <div class="divider"></div>
+
+                <a href="https://masozin.github.io/pdsdn01ttr" class="link-card">
+                    <span><span class="link-icon">🏫</span> Profil</span>
+                </a>
+
+
+                <!-- Dropdown #2 - berisi paragraf -->
+                <div style="display: none;" class="link-card" onclick="toggleDropdown('drop2')">
+                    <span><span class="link-icon">ℹ️</span> Tentang Saya</span>
+                    <span>▼</span>
+                </div>
+                <div id="drop2" class="dropdown-content">
+                    <p>Saya adalah desainer UI/UX dan pengembang frontend yang fokus pada pembuatan pengalaman digital
+                        yang bersih, cepat, dan ramah pengguna.</p>
+                </div>
+            </div>
+            <div class="divider2"></div>
+            <div class="footer">@2025</div>
+        </div>
+    </div>
+
+    <script>
+        // Countdown Timer
+        const deadline = new Date();
+        deadline.setDate(deadline.getDate() + 5);
+        const timerElement = document.getElementById('timer');
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = deadline - now;
+
+            if (distance <= 0) {
+                timerElement.textContent = "00:00:00";
+                return;
+            }
+
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            timerElement.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Toggle dropdown
+        function toggleDropdown(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle("show");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,203 @@
+{
+  "site": {
+    "lang": "id",
+    "title": "SDN 01 Toto Rejo",
+    "favicon": "icon.png"
+  },
+  "profile": {
+    "banner": "banner.jpg",
+    "avatar": "profil.jpg",
+    "name": "SDN 01 Toto Rejo",
+    "bio": "Kec. Belitang II Kab. OKU Timur",
+    "status": "show"
+  },
+  "menu": [
+    {
+      "id": "div1",
+      "type": "divider",
+      "status": "show",
+      "thickness": 0,
+      "height": "20px"
+    },
+    {
+      "id": "m1",
+      "type": "link",
+      "status": "show",
+      "icon": "ti:users",
+      "label": "Data Peseta Didik",
+      "url": "https://masozin.github.io/pdsdn01ttr",
+      "target": "_blank"
+    },
+    {
+      "id": "m2",
+      "type": "link",
+      "status": "show",
+      "icon": "ti:device-desktop-analytics",
+      "label": "E-Rapor",
+      "url": "https://sdn01ttr.ozinsq.my.id/erapor/",
+      "target": "_blank",
+      "style": { "bgcolor": "#1a3a6a" }
+    },
+    {
+      "id": "div2",
+      "type": "divider",
+      "status": "show"
+    },
+    {
+      "id": "m3",
+      "type": "link",
+      "status": "show",
+      "icon": "ti:file-description",
+      "label": "Lembar Absensi",
+      "url": "https://docs.google.com/spreadsheets/d/1krsHuu-25g8k_ogzqvM_ed4D8d3NiIgkwpuzH59kNWI/edit?gid=958660185#gid=958660185",
+      "target": "_blabk"
+    },
+    {
+      "id": "book",
+      "type": "dropdown",
+      "status": "show",
+      "icon": "ti:books",
+      "label": "Buku Kurikulum Merdeka SD",
+      "children": [
+        {
+          "id": "book1",
+          "type": "link",
+          "status": "show",
+          "icon": "ti:book",
+          "label": "Kelas 1",
+          "url": "https://sites.google.com/guru.sd.belajar.id/sdn01totorejo/buku-kurikulum-merdeka/buku-kumer-kelas-1",
+          "target": "_blabk",
+          "style": { "bgcolor": "#161b22" }
+        },
+        {
+          "id": "book2",
+          "type": "link",
+          "status": "show",
+          "icon": "ti:book",
+          "label": "Kelas 2",
+          "url": "https://sites.google.com/guru.sd.belajar.id/sdn01totorejo/buku-kurikulum-merdeka/buku-kumer-kelas-2",
+          "target": "_blabk",
+          "style": { "bgcolor": "#161b22" }
+        },
+        {
+          "id": "book3",
+          "type": "link",
+          "status": "show",
+          "icon": "ti:book",
+          "label": "Kelas 3",
+          "url": "https://sites.google.com/guru.sd.belajar.id/sdn01totorejo/buku-kurikulum-merdeka/buku-kumer-kelas-3",
+          "target": "_blabk",
+          "style": { "bgcolor": "#161b22" }
+        },
+        {
+          "id": "book4",
+          "type": "link",
+          "status": "show",
+          "icon": "ti:book",
+          "label": "Kelas 4",
+          "url": "https://sites.google.com/guru.sd.belajar.id/sdn01totorejo/buku-kurikulum-merdeka/buku-kumer-kelas-4",
+          "target": "_blabk",
+          "style": { "bgcolor": "#161b22" }
+        },
+        {
+          "id": "book5",
+          "type": "link",
+          "status": "show",
+          "icon": "ti:book",
+          "label": "Kelas 5",
+          "url": "https://sites.google.com/guru.sd.belajar.id/sdn01totorejo/buku-kurikulum-merdeka/buku-kumer-kelas-5",
+          "target": "_blabk",
+          "style": { "bgcolor": "#161b22" }
+        },
+        {
+          "id": "book6",
+          "type": "link",
+          "status": "show",
+          "icon": "ti:book",
+          "label": "Kelas 6",
+          "url": "https://sites.google.com/guru.sd.belajar.id/sdn01totorejo/buku-kurikulum-merdeka/buku-kumer-kelas-6",
+          "target": "_blabk",
+          "style": { "bgcolor": "#161b22" }
+        },
+        {
+          "id": "book-literasi",
+          "type": "link",
+          "status": "show",
+          "icon": "ti:book",
+          "label": "Buku Literasi",
+          "url": "https://sites.google.com/guru.sd.belajar.id/sdn01totorejo/home",
+          "target": "_blabk",
+          "style": { "bgcolor": "#161b22" }
+        }
+      ]
+    },
+    {
+      "id": "div3",
+      "type": "divider",
+      "status": "show"
+    },
+    {
+      "id": "m8",
+      "type": "link",
+      "status": "show",
+      "icon": "ti:table",
+      "label": "Download SpreadSheet",
+      "url": "https://play.google.com/store/apps/details?id=com.google.android.apps.docs.editors.sheets&pcampaignid=web_share",
+      "target": "_blank"
+    },
+    {
+      "id": "m6",
+      "type": "link",
+      "status": "show",
+      "icon": "ti:school",
+      "label": "Profil Sekolah",
+      "url": "https://masozin.github.io/pdsdn01ttr",
+      "target": "_blank"
+    },
+    {
+      "id": "div4",
+      "type": "divider",
+      "status": "show",
+      "thickness": 0,
+      "height": "20px"
+    },
+    {
+      "id": "sosmed",
+      "type": "icon-row",
+      "status": "show",
+      "children": [
+        {
+          "id": "ir-wa",
+          "status": "show",
+          "icon": "ti:brand-whatsapp",
+          "label": "WhatsApp",
+          "url": "https://wa.me/6281279373439",
+          "target": "_blank",
+          "style": { "color": "#25d366" }
+        },
+        {
+          "id": "ir-ig",
+          "status": "show",
+          "icon": "ti:brand-facebook",
+          "label": "facebook",
+          "url": "https://facebook.com/",
+          "target": "_blank",
+          "style": { "color": "#1877F2" }
+        },
+        {
+          "id": "ir-yt",
+          "status": "show",
+          "icon": "ti:brand-youtube",
+          "label": "YouTube",
+          "url": "https://youtube.com/@channel",
+          "target": "_blank",
+          "style": { "color": "#ff0000" }
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "status": "show",
+    "text": "© 2026 SDN 01 Toto Rejo. All rights reserved."
+  }
+}
