@@ -13,6 +13,13 @@
   },
   "menu": [
     {
+      "id": "div0",
+      "type": "divider",
+      "status": "show",
+      "thickness": 0,
+      "height": "20px"
+    },
+	{
       "id": "m6",
       "type": "link",
       "status": "show",
@@ -20,13 +27,6 @@
       "label": "Profil Sekolah",
       "url": "https://masozin.github.io/home.sdn01ttr/",
       "target": "_blank"
-    },
-	{
-      "id": "div1",
-      "type": "divider",
-      "status": "show",
-      "thickness": 0,
-      "height": "20px"
     },
     {
       "id": "m1",
