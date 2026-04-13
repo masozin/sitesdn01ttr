@@ -235,33 +235,60 @@
 
       /* ─── Dropdown container ─────────────────────────────────────── */
       .dropdown-children {
-        display: none;
+        display: flex;
         flex-direction: column;
         gap: 4px;
-        padding: 6px 0 2px 20px;
+        padding: 0 0 0 20px;
         border-left: 2px solid var(--clr-accent);
         margin-left: 8px;
-        animation: slideDown 0.2s ease;
+        /* smooth open/close */
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-4px);
+        transition:
+          max-height 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.24s cubic-bezier(0.4, 0, 0.2, 1),
+          transform 0.24s cubic-bezier(0.4, 0, 0.2, 1),
+          padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
       }
       .dropdown-children.show {
-        display: flex;
-      }
-
-      @keyframes slideDown {
-        from {
-          opacity: 0;
-          transform: translateY(-6px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        max-height: 1200px; /* tall enough for any depth */
+        opacity: 1;
+        transform: translateY(0);
+        padding: 6px 0 4px 20px;
       }
 
       /* nested children indent */
       .dropdown-children .dropdown-children {
         margin-left: 4px;
         border-left-color: var(--clr-accent2);
+      }
+
+      /* ─── Dropdown trigger — accent bar on left when open ───────── */
+      .item-link.open {
+        border-color: var(--clr-accent);
+        background: rgba(79, 156, 249, 0.06);
+      }
+
+      /* ─── Ripple effect on dropdown trigger click ────────────────── */
+      .item-link {
+        position: relative;
+        overflow: hidden;
+      }
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(79, 156, 249, 0.18);
+        transform: scale(0);
+        animation: ripple-anim 0.5s linear;
+        pointer-events: none;
+      }
+      @keyframes ripple-anim {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
       }
 
       /* ─── Text block ─────────────────────────────────────────────── */
@@ -669,10 +696,34 @@
               if (childEl) children.appendChild(childEl);
             });
 
-            btn.addEventListener("click", () => {
+            btn.addEventListener("click", (e) => {
+              // ── Ripple ──────────────────────────────────────────────
+              const ripple = document.createElement("span");
+              ripple.className = "ripple";
+              const rect = btn.getBoundingClientRect();
+              const size = Math.max(rect.width, rect.height);
+              ripple.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size / 2}px;top:${e.clientY - rect.top - size / 2}px`;
+              btn.appendChild(ripple);
+              ripple.addEventListener("animationend", () => ripple.remove());
+
+              // ── Toggle open/close ────────────────────────────────────
               const open = children.classList.toggle("show");
               btn.classList.toggle("open", open);
               btn.setAttribute("aria-expanded", String(open));
+
+              // ── Stagger children on open ─────────────────────────────
+              if (open) {
+                Array.from(children.children).forEach((child, i) => {
+                  child.style.opacity = "0";
+                  child.style.transform = "translateX(-8px)";
+                  child.style.transition = "none";
+                  requestAnimationFrame(() => {
+                    child.style.transition = `opacity 0.2s ease ${i * 45}ms, transform 0.2s ease ${i * 45}ms`;
+                    child.style.opacity = "1";
+                    child.style.transform = "translateX(0)";
+                  });
+                });
+              }
             });
 
             wrapper.appendChild(btn);
