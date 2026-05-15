@@ -19,7 +19,7 @@
       "thickness": 0,
       "height": "20px"
     },
-	{
+    {
       "id": "m6",
       "type": "link",
       "status": "show",
@@ -38,7 +38,7 @@
       "target": "_blank"
     },
     {
-      "id": "m2",
+      "id": "m3",
       "type": "link",
       "status": "show",
       "icon": "ti:device-desktop-analytics",
@@ -46,6 +46,22 @@
       "url": "https://sdn01ttr.ozinsq.my.id/erapor/",
       "target": "_blank",
       "style": { "bgcolor": "#1a3a6a" }
+    },
+    {
+      "id": "div2",
+      "type": "divider",
+      "status": "show",
+      "thickness": 0
+    },
+    {
+      "id": "m2",
+      "type": "link",
+      "status": "show",
+      "icon": "ti:certificate",
+      "label": "Nilai Ijazah 2526",
+      "url": "https://docs.google.com/spreadsheets/d/11BVTB9Gj6nRvE5A3pNrGtdOyse1-3289SsUHvvdLLcg/edit?gid=1657074423#gid=1657074423",
+      "target": "_blank",
+      "style": { "bgcolor": "#4a4415" }
     },
     {
       "id": "div2",
