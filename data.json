@@ -38,6 +38,11 @@
       "target": "_blank"
     },
     {
+      "id": "div2",
+      "type": "divider",
+      "status": "show"
+    },
+    {
       "id": "m3",
       "type": "link",
       "status": "show",
@@ -46,12 +51,6 @@
       "url": "https://sdn01ttr.ozinsq.my.id/erapor/",
       "target": "_blank",
       "style": { "bgcolor": "#1a3a6a" }
-    },
-    {
-      "id": "div2",
-      "type": "divider",
-      "status": "show",
-      "thickness": 0
     },
     {
       "id": "m2",
