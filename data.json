@@ -63,6 +63,15 @@
       "style": { "bgcolor": "#4a4415" }
     },
     {
+      "id": "m4",
+      "type": "link",
+      "status": "show",
+      "icon": "ti:player-play",
+      "label": "Perpisahan 2026",
+      "url": "https://masozin.github.io/alumni-sd-2026/",
+      "target": "_blabk"
+    },
+    {
       "id": "div2",
       "type": "divider",
       "status": "show"
