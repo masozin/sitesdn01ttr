@@ -1,0 +1,21 @@
+{
+  "name": "Microsite SDN01TTR",
+  "short_name": "SDN 01 Toto Rejo",
+  "description": "Situs-situs penting SD Negeri 01 Toto Rejo",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#03040d",
+  "theme_color": "#00d4ff",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Loading…</title>
+    <meta name="theme-color" content="#00d4ff" />
+    <title>SDN 01 Toto Rejo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -843,6 +844,15 @@
         }
       }
       init();
+
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("sw.js")
+            .then((reg) => console.log("PWA aktif dan terdaftar!"))
+            .catch((err) => console.log("Gagal mendaftarkan PWA", err));
+        });
+      }
     </script>
   </body>
 </html>
