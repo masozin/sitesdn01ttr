@@ -1,8 +1,7 @@
-const CACHE_NAME = 'v0.0.1';
+const CACHE_NAME = 'v0.0.2';
 const ASSETS = [
   './',
   'index.html',
-  'data.json',
   'manifest.json',
 
   'banner.jpg',
