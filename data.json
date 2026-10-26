@@ -86,6 +86,15 @@
       "target": "_blabk"
     },
     {
+      "id": "m4",
+      "type": "link",
+      "status": "show",
+      "icon": "ti:file-description",
+      "label": "DH Siswa",
+      "url": "https://masozin.github.io/dh-siswa/",
+      "target": "_blabk"
+    },
+    {
       "id": "book",
       "type": "dropdown",
       "status": "show",
